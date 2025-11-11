@@ -1,3 +1,9 @@
 Flask
 gunicorn
 flask-cors
+langchain  # Covers general langchain imports
+langchain-community  # For SentenceTransformerEmbeddings
+langchain-pinecone
+pinecone-client  # For pinecone import
+langchain-google-genai
+sentence-transformers

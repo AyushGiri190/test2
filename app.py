@@ -4,6 +4,25 @@ import os
 app = Flask(__name__)
 CORS(app)  # Allow all origins (for development)
 
+@app.route('/chatbot', methods=["POST","GET"])
+def chatbot():
+    data = request.get_json()
+    if not data or 'message' not in data:
+        return jsonify({"error": "Missing 'message' in request body"}), 400
+
+    user_message = data['message']
+    if not isinstance(user_message, str) or not user_message.strip():
+        return jsonify({"error": "'message' must be a non-empty string"}), 400
+    bot_reply = get_chatbot_response(user_message,chat_history)
+    # Dummy chatbot logic — echo back the message with some prefix
+   # bot_reply = f"You said: {user_message}. This is a demo response."
+
+    # TODO: Replace the above with your AI/chatbot logic
+
+    return jsonify({"reply": bot_reply})
+
+
+
 
 @app.route("/check-age", methods=["POST","GET"])
 def check_age():
