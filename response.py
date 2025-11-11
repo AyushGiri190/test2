@@ -4,8 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from context_retriver import retrieve_context
 import os 
-from dotenv import load_dotenv # Import the function
-load_dotenv()
+
 os.environ["GOOGLE_API_KEY"] = os.environ.get('gemini_key') # or set it via environment
 
 def get_chatbot_response(user_query: str, chat_history: list) -> str:
